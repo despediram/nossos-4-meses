@@ -34,6 +34,27 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             animation: fadeIn 2s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: 80vh;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #8a2be2, #6a0dad);
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #9370db, #6a0dad);
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
         }
 
         .title {
