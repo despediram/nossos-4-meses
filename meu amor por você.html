@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 4 Meses</title>
+    <style>
+        /* Reset and font import */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* Prevent text selection */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a0dad, #8a2be2, #9370db);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 90%;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #e0c3fc, #8ec5fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .message {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .heart {
+            font-size: 2.5rem;
+            color: #ff69b4;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #9370db;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #8a2be2;
+        }
+
+        .floating {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: float 4s ease-in-out infinite;
+            color: #d8b4ff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Feliz 4 Meses, Meu Amor!</div>
+        <div class="message">
+            Hoje a gente completa 4 meses juntos, e é meio louco pensar em como o tempo passou rápido, mas ao mesmo tempo parece que te conheço há uma vida inteira. Eu queria aproveitar esse momento pra abrir meu coração, porque você merece saber o quanto é especial pra mim.<br><br>
+
+            Você sabe que eu sou ansioso, que penso demais sobre tudo, né? Às vezes, isso acaba me deixando meio atrapalhado, ou até meio chato. Quero te pedir desculpas se, em algum momento, isso te cansou ou te incomodou. Juro que nunca é minha intenção, e eu tô sempre tentando melhorar, porque você é a pessoa que me faz querer ser a melhor versão de mim.<br><br>
+
+            Entre todos os meus pensamentos confusos, uma certeza sempre foi clara: <b>não escolhi pensar demais, mas escolhi você.</b> Você é a minha calma no meio do caos, o meu ponto de paz quando o mundo parece pesado demais.<br><br>
+
+            Julia, você tem o sorriso mais lindo que eu já vi, aquele que faz meu coração acelerar toda vez. Você tem uma maneira de me olhar que me faz sentir que tudo vai ficar bem. Você é minha pessoa favorita no mundo inteiro, sabia?<br><br>
+
+            Obrigado por ser quem você é, por ser minha companheira, minha confidente, minha paz. E obrigado por ter paciência comigo, por me entender mesmo quando eu nem consigo me entender direito. Você faz tudo valer a pena.<br><br>
+
+            Eu te amo demais. Que venham muitos e muitos meses pra gente comemorar juntos! ❤️
+        </div>
+        <div class="heart">💜</div>
+        <button class="button" onclick="createRain()">Te amo!</button>
+    </div>
+
+    <script>
+        function createRain() {
+            for (let i = 0; i < 30; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating';
+                element.textContent = i % 2 === 0 ? '💜' : 'Eu te amo';
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = Math.random() * 100 + 'vh';
+                element.style.animationDuration = Math.random() * 2 + 3 + 's';
+                element.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+                document.body.appendChild(element);
+
+                setTimeout(() => {
+                    element.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
