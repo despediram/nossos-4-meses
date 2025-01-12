@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="coracaoroxo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz 4 Meses</title>
     <style>
-        /* Reset and font import */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* Prevent text selection */
+            user-select: none;
         }
 
         body {
@@ -22,39 +22,19 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
-            overflow: hidden;
-            position: relative;
         }
 
         .container {
-            max-width: 90%;
+            width: 100%;
+            max-width: 600px;
             text-align: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             animation: fadeIn 2s ease;
-            overflow-y: auto;
-            overflow-x: hidden;
-            max-height: 80vh;
-        }
-
-        .container::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        .container::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #8a2be2, #6a0dad);
-            border-radius: 6px;
-        }
-
-        .container::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #9370db, #6a0dad);
-        }
-
-        .container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
         }
 
         .title {
@@ -100,11 +80,57 @@
             background: #8a2be2;
         }
 
+        .audio-player {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #6a0dad, #8a2be2);
+            padding: 20px;
+            border-radius: 15px;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .audio-player audio {
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .audio-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .audio-controls button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #8a2be2;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .audio-controls button:hover {
+            background: #6a0dad;
+        }
+
+        .audio-controls input[type="range"] {
+            flex: 1;
+            max-width: 200px;
+        }
+
         .floating {
             position: absolute;
             font-size: 1.5rem;
             animation: float 4s ease-in-out infinite;
             color: #d8b4ff;
+            pointer-events: none;
         }
 
         @keyframes fadeIn {
@@ -133,7 +159,7 @@
                 opacity: 1;
             }
             to {
-                transform: translateY(-200px);
+                transform: translateY(-100px);
                 opacity: 0;
             }
         }
@@ -154,27 +180,50 @@
             Obrigado por ser quem você é, por ser minha companheira, minha confidente, minha paz. E obrigado por ter paciência comigo, por me entender mesmo quando eu nem consigo me entender direito. Você faz tudo valer a pena.<br><br>
 
             Eu te amo demais. Que venham muitos e muitos meses pra gente comemorar juntos! 💜
+
+            <br><br><b>não esquece de escutar o audio ali embaixo, eu sei que é grande, mas eu falei muita coisa do coraçãozinho, pode colocar em 2x se achar melhor :)</b><br>
         </div>
         <div class="heart">💜</div>
-        <button class="button" onclick="createRain()">Te amo!</button>
+        <button class="button" onclick="createRain()">Eu Te amo!</button>
+        <div class="audio-player">
+            <audio id="audio" src="Gravação.m4a" controls></audio>
+            <div class="audio-controls">
+                <button onclick="changeSpeed(0.75)">0.75x</button>
+                <button onclick="changeSpeed(1)">Normal</button>
+                <button onclick="changeSpeed(1.5)">1.5x</button>
+                <button onclick="changeSpeed(2)">2x</button>
+                <input type="range" id="volume" min="0" max="1" step="0.1" onchange="setVolume(this.value)" title="Volume">
+            </div>
+        </div>
     </div>
 
     <script>
         function createRain() {
+            const container = document.querySelector('.container');
             for (let i = 0; i < 30; i++) {
                 const element = document.createElement('div');
                 element.className = 'floating';
                 element.textContent = i % 2 === 0 ? '💜' : 'Eu te amo';
-                element.style.left = Math.random() * 100 + 'vw';
-                element.style.top = Math.random() * 100 + 'vh';
+                element.style.left = Math.random() * 90 + '%';
+                element.style.top = Math.random() * 90 + '%';
                 element.style.animationDuration = Math.random() * 2 + 3 + 's';
                 element.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
-                document.body.appendChild(element);
+                container.appendChild(element);
 
                 setTimeout(() => {
                     element.remove();
                 }, 5000);
             }
+        }
+
+        function changeSpeed(speed) {
+            const audio = document.getElementById('audio');
+            audio.playbackRate = speed;
+        }
+
+        function setVolume(value) {
+            const audio = document.getElementById('audio');
+            audio.volume = value;
         }
     </script>
 </body>
